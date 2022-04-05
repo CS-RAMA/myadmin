@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <title>My Admin</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper blue ">
+            <div class="container">
+          <a href="#!" class="brand-logo">MYadmin</a>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">DashBoard</a></li>
+            <li><a href="posts.html">Posts</a></li>
+            <li><a href="Category.html">Catégories</a></li>
+            <li><a href="Comments.html">Comments</a></li>
+            <li><a href="Users.html">Users</a></li>
+            <li><button href="#" data-target="slide-out" class="sidenav-trigger btn N/A transparent z-depth-0">
+                <i class=" material-icons white-text">menu</i></button></li>
+                
+          </ul>
+        </div>
+    </div>
+      </nav>
+      <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+          <div class="background">
+           <img src="ciel.webp" >
+          </div>
+          <a href="#user"><img class="circle" src="myavatar.webp"></a>
+          <a href="#name"><span class="white-text name">Zeynab Soum</span></a>
+          <a href="#email"><span class="white-text email">Zeyna@gmail.com</span></a>
+        </div></li>
+        <li><a href="index.html">DashBoard<i class="material-icons">apps</i></a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="Category.html">Catégories</a></li>
+        <li><a href="Comments.html">Comments</a></li>
+        <li><a href="Users.html">Users</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Account Controls</a></li>
+        <li><a class="waves-effect" href="#!">Logout</a></li>
+      </ul>
+      
+      
+<section>
+    <div class="COntainer-fluid">
+<div class="row">
+    <div class="col s3 m3 center white-text">
+        <div class="card horizontal blue">
+      <div class="card-stacked">
+        <div class="card-content">
+            <i class="fa-solid fa-face-smile"></i>
+            <h6>Monthly Visitors</h6>
+            <h5>35900</h5>
+            <div class="progress">
+                <div class="determinate white" style="width: 40%"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col s3 m3 center">
+        <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <i class="fa-solid fa-pen"></i>
+            <h6>Blog Posts</h6>
+            <h5>207</h5>
+            <div class="progress">
+                <div class="determinate blue" style="width: 30%"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col s3 m3 center white-text">
+        <div class="card horizontal blue">
+      <div class="card-stacked">
+        <div class="card-content">
+            <i class="fa-solid fa-message"></i>
+            <h6>Comments</h6>
+            <h5>2300</h5>
+            <div class="progress">
+                <div class="determinate white" style="width: 45%"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col s3 m3 center">
+        <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <i class="fa-solid fa-user-group"></i>
+            <h6>Users</h6>
+            <h5>410</h5>
+            <div class="progress">
+                <div class="determinate blue" style="width: 20%"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+    </div>
+</section>
+<div class="container-fluid blue lighten-3">
+    <div class="row">
+        <div class=" card-panel col s12 m8">
+            <canvas id="myChart" width="400" height="100"></canvas>
+            <script>
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: 'Daily Visitors',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+            </div>
+        <div class="col s12 m4">
+            <ul class="collection">
+                <li class="collection-item">
+                    <h6>Latest Comments</h6>
+                </li>
+                <li class="collection-item">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="Avatar-example-Kathleen-Morris-190nulz-10ppb1u-300x281.webp" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                <h6>Zeynab Soum</h6>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, repudiandae.</p>
+                <p class="green-text">Approuve | Deny</p>
+              </span>
+            </div>
+        </div>
+                </li>
+                <li class="collection-item">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="peter.gif" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                <h6>Adams Junior</h6>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, officiis.</p>
+                <p class="green-text">Approuve | Deny</p>
+              </span>
+            </div>
+    
+        </div>
+                </li>
+                <li class="collection-item">
+        
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="myavatar.webp" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                <h6>Rainat Amadou</h6>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, aperiam!</p>
+                <p class="green-text">Approuve | Deny</p>
+              </span>
+            </div>
+        </div>
+                </li>
+              </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col s12 m8">
+<div class="card-panel">
+    <table class="striped">
+        <thead>
+            <h5>Recent Posts</h5>
+          <tr>
+              <th>Title</th>
+              <th>Category</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Post One</td>
+            <td>Web Developper</td>
+            <td><button class="btn blue lighten-2">DETAILS</button></td>
+          </tr>
+          <tr>
+            <td>Post Two</td>
+            <td>Web Developper</td>
+            <td><button class="btn blue lighten-2">DETAILS</button></td>
+
+          </tr>
+          <tr>
+            <td>Post Three</td>
+            <td>Web Developper</td>
+            <td><button class="btn blue lighten-2">DETAILS</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+            
+</div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card-panel">
+            <h5>Quick Todos</h5>
+            <div class="input-field ">
+                <input type="text" class="validate">
+                <label class="active" >Add Todo...</label>
+              </div>
+            <ul class="collection with-header">
+                <li class="collection-item"><div>Todo one <a href="#!" class="secondary-content"><i class="material-icons">clear</i></a></div></li>
+                <li class="collection-item"><div>Todo two<a href="#!" class="secondary-content"><i class="material-icons">clear</i></a></div></li>
+               
+              </ul>
+        </div>
+        
+                
+    </div>
+</div>
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating blue modal-trigger" href="#modal1"><i class="fa-solid fa-pen"></i></a>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Add Posts</h4>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="Title" type="password" class="validate">
+                  <label for="Title">Title</label>
+                </div>
+              </div>
+              <label for="Title">Category</label>
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Materialize Select</label>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <div id="editor"></div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close blue"><button class=" btn blue">Submit</button></a>
+            </div>
+          </div></li>
+      <li><a class="btn-floating blue modal-trigger" href="#modal2"><i class="fa-solid fa-folder"></i>
+            </a>
+            <div id="modal2" class="modal">
+              <div class="modal-content">
+                <h4>Add Category</h4>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="Title" type="password" class="validate">
+                    <label for="Title">Title</label>
+                  </div>
+                </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close blue"><button class=" btn blue">Submit</button></a>
+              </div>
+            </div>
+          </li>
+      <li><a class="btn-floating blue modal-trigger" href="#modal3"><i class="fa-solid fa-user"></i></a>
+        <div id="modal3" class="modal">
+          <div class="modal-content">
+            <h4>Add User</h4>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="Title" type="password" class="validate">
+                <label for="Title">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="Title" type="password" class="validate">
+                <label for="Title">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="Title" type="password" class="validate">
+                <label for="Title">Password</label>
+              </div>
+              <div class="input-field col s12 green-text">
+                <input id="Title" type="password" class="validate">
+                <label for="Title" class="green-text">Confirm Password</label>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close blue"><button class=" btn blue">Submit</button></a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <footer class="page-footer blue">
+      <div class="container" style="padding: 10px 0px;">
+             <div class="container center white-text">
+              <p>MyAdmin Codeloccol CopyRight 2022</p>  
+             </div>
+      </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script> 
+    //materiel boxed
+    $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });
+  
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+  $('#textarea1').val('New Text');
+  M.textareaAutoResize($('#textarea1'));
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  </script>
+  <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+</body>
+
+</html>
